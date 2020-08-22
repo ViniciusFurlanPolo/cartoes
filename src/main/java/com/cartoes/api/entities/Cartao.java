@@ -22,7 +22,7 @@ public class Cartao implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@Column(name = "numero", nullable = false, length = 16, unique = true)
+	@Column(name = "numero", nullable = false, length = 16, unique = true) 
 	private String numero;
 
 	@Column(name = "data_Validade", nullable = false)
