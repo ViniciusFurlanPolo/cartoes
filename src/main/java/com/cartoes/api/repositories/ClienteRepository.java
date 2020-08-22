@@ -13,3 +13,4 @@ public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 	@Transactional(readOnly = true)
 	List<Cliente> findByUfAndDataAtualizacao(String uf, Date dataAtualizacao);
 }
+ 
