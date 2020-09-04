@@ -79,7 +79,7 @@ public class Transacao implements Serializable {
 		this.juros = juros;
 	}
 	
-	public Cartao GetCartao() {
+	public Cartao getCartao() {
 		return cartao;
 	}
 	public void SetCartao(Cartao cartao) {
