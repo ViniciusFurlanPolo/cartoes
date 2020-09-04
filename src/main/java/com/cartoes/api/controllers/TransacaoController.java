@@ -23,7 +23,7 @@ import com.cartoes.api.utils.ConsistenciaException;
 @RequestMapping("/api/transacao")
 @CrossOrigin(origins = "*")
 public class TransacaoController {
-	private static final Logger log = LoggerFactory.getLogger(CartaoController.class);
+	private static final Logger log = LoggerFactory.getLogger(TransacaoController.class);
 	@Autowired
 	private TrasacaoService transacaoService;
 	
