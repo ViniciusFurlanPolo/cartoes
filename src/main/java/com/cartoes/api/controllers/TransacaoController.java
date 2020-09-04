@@ -25,13 +25,13 @@ import com.cartoes.api.utils.ConsistenciaException;
 public class TransacaoController {
 	private static final Logger log = LoggerFactory.getLogger(TransacaoController.class);
 	@Autowired
-	private TrasacaoService transacaoService;
+	private TrasacaoService trasacaoService;
 	
 	@GetMapping(value = "/cartao/{cartaoId}")
 	public ResponseEntity<List<Transacao>> buscarPorCartaoId(@PathVariable("cartaoId") int cartaoId) {
 		try {
 			log.info("Controller: buscando transações do cartão de ID: {}", cartaoId);
-			Optional<List<Transacao>> listaTransacao = transacaoService.buscarPorCartaoId(cartaoId);
+			Optional<List<Transacao>> listaTransacao = trasacaoService.buscarPorCartaoId(cartaoId);
 			return ResponseEntity.ok(listaTransacao.get());
 		} catch (ConsistenciaException e) {
 			log.info("Controller: Inconsistência de dados: {}", e.getMessage());
@@ -47,7 +47,7 @@ public class TransacaoController {
 		try {
 			log.info("Controller: salvando a transação: {}", transacao.toString());
 
-			return ResponseEntity.ok(this.transacaoService.salvar(transacao));
+			return ResponseEntity.ok(this.trasacaoService.salvar(transacao));
 		} catch (ConsistenciaException e) {
 			log.info("Controller: Inconsistência de dados: {}", e.getMessage());
 			return ResponseEntity.badRequest().body(new Transacao());
@@ -62,7 +62,7 @@ public class TransacaoController {
 
 		try {
 			log.info("Controller: excluíndo transação de ID: {}", id);
-			transacaoService.excluirPorId(id);
+			trasacaoService.excluirPorId(id);
 			return ResponseEntity.ok("Transação de id: " + id + " excluído com sucesso");
 		} catch (ConsistenciaException e) {
 			log.info("Controller: Inconsistência de dados: {}", e.getMessage());
