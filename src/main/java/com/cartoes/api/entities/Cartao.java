@@ -14,6 +14,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
+
 @Entity
 @Table(name = "cartao")
 public class Cartao implements Serializable {
@@ -37,6 +38,7 @@ public class Cartao implements Serializable {
 	@JsonBackReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Cliente cliente;
+	
 
 	public int getId() {
 		return id;
