@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.cartoes.api.entities.Transacao;
 import com.cartoes.api.services.TrasacaoService;
 import com.cartoes.api.utils.ConsistenciaException;
@@ -24,6 +25,7 @@ import com.cartoes.api.utils.ConsistenciaException;
 @CrossOrigin(origins = "*")
 public class TransacaoController {
 	private static final Logger log = LoggerFactory.getLogger(TransacaoController.class);
+	
 	@Autowired
 	private TrasacaoService trasacaoService;
 	

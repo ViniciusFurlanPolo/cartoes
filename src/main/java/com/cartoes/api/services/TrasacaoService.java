@@ -12,7 +12,7 @@ import com.cartoes.api.repositories.TransacaoRepository;
 import com.cartoes.api.utils.ConsistenciaException;
 
 public class TrasacaoService {
-	private static final Logger log = LoggerFactory.getLogger(CartaoService.class);
+	private static final Logger log = LoggerFactory.getLogger(TrasacaoService.class);
 	@Autowired
 	private CartaoRepository cartaoRepository;
 	@Autowired
