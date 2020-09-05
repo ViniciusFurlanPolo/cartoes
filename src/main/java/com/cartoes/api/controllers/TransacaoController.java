@@ -25,7 +25,6 @@ import com.cartoes.api.utils.ConsistenciaException;
 @CrossOrigin(origins = "*")
 public class TransacaoController {
 	private static final Logger log = LoggerFactory.getLogger(TransacaoController.class);
-	
 	@Autowired
 	private TrasacaoService trasacaoService;
 	
