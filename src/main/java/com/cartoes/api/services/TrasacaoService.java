@@ -7,10 +7,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import com.cartoes.api.entities.Transacao;
+import org.springframework.stereotype.Service;
 import com.cartoes.api.repositories.CartaoRepository;
 import com.cartoes.api.repositories.TransacaoRepository;
 import com.cartoes.api.utils.ConsistenciaException;
 
+@Service
 public class TrasacaoService {
 	private static final Logger log = LoggerFactory.getLogger(TrasacaoService.class);
 	@Autowired
