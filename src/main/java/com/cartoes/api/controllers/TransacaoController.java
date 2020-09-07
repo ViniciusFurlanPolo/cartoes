@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,17 +27,18 @@ public class TransacaoController {
 	@Autowired
 	private TrasacaoService trasacaoService;
 	
-	@GetMapping(value = "/cartao/{cartaoId}")
-	public ResponseEntity<List<Transacao>> buscarPorCartaoId(@PathVariable("cartaoId") int cartaoId) {
+	@GetMapping(value = "/cartao/{numeroCartao}")
+	public ResponseEntity<List<Transacao>> buscarPorNumeroCartao(@PathVariable("numeroCartao") String numeroCartao) {
 		try {
-			log.info("Controller: buscando transações do cartão de ID: {}", cartaoId);
-			Optional<List<Transacao>> listaTransacao = trasacaoService.buscarPorCartaoId(cartaoId);
+			
+			Optional<List<Transacao>> listaTransacao = trasacaoService.buscarPorNumeroCartao(numeroCartao);
+			
 			return ResponseEntity.ok(listaTransacao.get());
 		} catch (ConsistenciaException e) {
-			log.info("Controller: Inconsistência de dados: {}", e.getMessage());
+			log.info("Controller: Inconsistência de dados: {} ", e.getMensagem());
 			return ResponseEntity.badRequest().body(new ArrayList<Transacao>());
 		} catch (Exception e) {
-			log.error("Controller: Ocorreu um erro na aplicação: {}", e.getMessage());
+			log.info("Controller: Ocorreu um erro na aplicação: {}", e.getMessage());
 			return ResponseEntity.status(500).body(new ArrayList<Transacao>());
 		}
 	}
@@ -56,23 +56,6 @@ public class TransacaoController {
 			log.error("Controller: Ocorreu um erro na aplicação: {}", e.getMessage());
 			return ResponseEntity.status(500).body(new Transacao());
 		}
-	}
-	
-	@DeleteMapping(value = "excluir/{id}")
-	public ResponseEntity<String> excluirPorId(@PathVariable("id") int id) {
-
-		try {
-			log.info("Controller: excluíndo transação de ID: {}", id);
-			trasacaoService.excluirPorId(id);
-			return ResponseEntity.ok("Transação de id: " + id + " excluído com sucesso");
-		} catch (ConsistenciaException e) {
-			log.info("Controller: Inconsistência de dados: {}", e.getMessage());
-			return ResponseEntity.badRequest().body(e.getMensagem());
-		} catch (Exception e) {
-			log.error("Controller: Ocorreu um erro na aplicação: {}", e.getMessage());
-			return ResponseEntity.status(500).body(e.getMessage());
-		}
-
 	}
 
 }
