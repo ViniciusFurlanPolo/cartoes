@@ -7,8 +7,11 @@ import java.util.List;
  
 import com.cartoes.api.dtos.CartaoDto;
 import com.cartoes.api.dtos.ClienteDto;
+import com.cartoes.api.dtos.TransacaoDto;
 import com.cartoes.api.entities.Cartao;
 import com.cartoes.api.entities.Cliente;
+import com.cartoes.api.entities.Transacao;
+
  
 public class ConversaoUtils {
  
@@ -85,5 +88,37 @@ public class ConversaoUtils {
          	return clienteDto;
  
    	}
+   	
+   	public static Transacao Converter(TransacaoDto transacaoDto) throws ParseException{
+   		Transacao transacao = new Transacao();
+   		
+   		if (transacaoDto.getId() != null && transacaoDto.getId() != "")
+        	transacao.Setid(Integer.parseInt(transacaoDto.getId()));
+   		transacao.SetCnpj(transacaoDto.getCnpj());
+   		transacao.SetValor(Double.parseDouble(transacaoDto.getValor()));
+   		transacao.SetJuros(Double.parseDouble(transacaoDto.getJuros()));
+   		transacao.Setqdtparcelas(Integer.parseInt(transacaoDto.getQtdParcelas()));
+   		
+   		Cartao cartao = new Cartao();
+   		cartao.setId(Integer.parseInt(transacaoDto.getId()));
+   		
+   		transacao.SetCartao(cartao);
+   		
+   		return transacao;
+   	}
+   	
+   	public static TransacaoDto Converter(Transacao transacao) {
+   		TransacaoDto transacaoDto = new TransacaoDto();
+   		
+   		transacaoDto.setId(String.valueOf(transacao.Getid()));
+   		transacaoDto.setCnpj(transacao.GetCnpj());
+   		transacaoDto.setValor(String.valueOf(transacao.GetValor()));
+   		transacaoDto.setJuros(String.valueOf(transacao.GetJuros()));
+   		transacaoDto.setQtdParcalas(String.valueOf(transacao.GetqdtParcelas()));
+   		transacaoDto.setCartaoId(String.valueOf(transacao.getCartao().getId()));
+   		
+   		return transacaoDto;
+   	}
+   	
 
 }
