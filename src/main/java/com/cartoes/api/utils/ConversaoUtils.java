@@ -120,5 +120,17 @@ public class ConversaoUtils {
    		return transacaoDto;
    	}
    	
+	public static List<TransacaoDto> ConverterListaT(List<Transacao> lista){
+     	
+     	List<TransacaoDto> lst = new ArrayList<TransacaoDto>(lista.size());
+     	
+     	for (Transacao transacao : lista) {
+            	lst.add(Converter(transacao));
+     	}
+     	
+     	return lst;
+     	
+	}
+   	
 
 }
