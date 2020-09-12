@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.text.ParseException;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -141,7 +140,7 @@ public class TransacaoServiceTest {
 		BDDMockito.given(cartaoRepository.findByNumero(Mockito.any()))
 		.willReturn(Optional.of(testCartao));
 		
-		transacaoRepository.save(testTransacao);
+		transacaoService.salvar(testTransacao);
 		
 		
 	}
