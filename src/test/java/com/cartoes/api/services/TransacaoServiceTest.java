@@ -52,6 +52,9 @@ public class TransacaoServiceTest {
 		testTransacao.SetCartao(new Cartao());
 		
 		testCartao = new Cartao();
+		
+		dataTest = new Date();
+		testCartao.setDataValidade(dataTest);
 	}
 
 	@Test
