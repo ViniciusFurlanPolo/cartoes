@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -81,7 +82,7 @@ public class TransacaoServiceTest {
 	}
 
 	@Test
-	public void testSalvarComSucesso() throws ConsistenciaException {
+	public void testSalvarComSucesso() throws ConsistenciaException, ParseException {
 		
 		BDDMockito.given(cartaoRepository.findByNumero(Mockito.any()))
 		.willReturn(Optional.of(testCartao));
