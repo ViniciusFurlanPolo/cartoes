@@ -4,6 +4,7 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -42,10 +43,14 @@ public class TransacaoServiceTest {
 	
 	private Transacao testTransacao;
 	private Cartao testCartao;
-	private Date dataTest;
 
 	@Before
 	public void setUp() throws Exception {
+		Calendar test = Calendar.getInstance();
+		
+		int dataTest = test.get(Calendar.DAY_OF_MONTH);
+		
+		test.set(Calendar.DAY_OF_MONTH, dataTest + 1);
 		
 		testTransacao = new Transacao();
 
@@ -53,8 +58,7 @@ public class TransacaoServiceTest {
 		
 		testCartao = new Cartao();
 		
-		dataTest = new Date();
-		testCartao.setDataValidade(dataTest);
+		testCartao.setDataValidade(test.getTime());
 	}
 
 	@Test
@@ -124,9 +128,15 @@ public class TransacaoServiceTest {
 	
 	@Test(expected = ConsistenciaException.class)
 	public void testSalvarCartaoVencido() throws ConsistenciaException{
+		Calendar test = Calendar.getInstance();
 		
-		dataTest.setTime(5000);
-		testCartao.setDataValidade(dataTest);
+		int dataTest = test.get(Calendar.DAY_OF_MONTH);
+		
+		test.set(Calendar.DAY_OF_MONTH, dataTest - 1);
+
+		
+		
+		testCartao.setDataValidade(test.getTime());
 		
 		BDDMockito.given(cartaoRepository.findByNumero(Mockito.any()))
 		.willReturn(Optional.of(testCartao));
