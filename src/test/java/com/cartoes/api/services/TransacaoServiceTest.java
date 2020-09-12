@@ -3,6 +3,7 @@ package com.cartoes.api.services;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -50,31 +51,30 @@ public class TransacaoServiceTest {
 		testTransacao.SetCartao(new Cartao());
 		
 		testCartao = new Cartao();
-		
-		dataTest = new Date();
-		
-		dataTest.setTime(1000);
-		
-		testCartao.setDataValidade(dataTest);
 	}
 
 	@Test
 	public void testBuscarPorNumeroCartaoExistente() throws ConsistenciaException {
 
-		Optional<List<Transacao>> lstTransacao = transacaoService.buscarPorNumeroCartao("9993063207738947");
+		List<Transacao> lstTransacao = new ArrayList<>();
+		lstTransacao.add(new Transacao());
 
 		BDDMockito.given(transacaoRepository.findByNumeroCartao(Mockito.anyString()))
-		.willReturn(lstTransacao);
+		.willReturn(Optional.of(lstTransacao));
+		
+		Optional<List<Transacao>> resultado = transacaoService.buscarPorNumeroCartao("9993063207738947");
 
-		assertTrue(lstTransacao.isPresent());
+		assertTrue(resultado.isPresent());
 
 	}
 
 	@Test(expected = ConsistenciaException.class)
 	public void testBuscarPorNumeroCartaoNaoExistente() throws ConsistenciaException {
+		
+		List<Transacao> lstTransacao = new ArrayList<>();
 
 		BDDMockito.given(transacaoRepository.findByNumeroCartao(Mockito.anyString()))
-		.willReturn(null);
+		.willReturn(Optional.of(lstTransacao));
 
 		transacaoService.buscarPorNumeroCartao("9993063207769834");
 
@@ -82,11 +82,14 @@ public class TransacaoServiceTest {
 
 	@Test
 	public void testSalvarComSucesso() throws ConsistenciaException {
+		
+		BDDMockito.given(cartaoRepository.findByNumero(Mockito.any()))
+		.willReturn(Optional.of(testCartao));
 
 		BDDMockito.given(transacaoRepository.save(Mockito.any(Transacao.class)))
 		.willReturn(new Transacao());
 
-		Transacao resultado = transacaoService.salvar(new Transacao());
+		Transacao resultado = transacaoService.salvar(testTransacao);
 
 		assertNotNull(resultado);
 
