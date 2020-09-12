@@ -120,7 +120,7 @@ public class TransacaoServiceTest {
 	public void testSalvarCartaoVencido() throws ConsistenciaException{
 		
 		dataTest = new Date();
-		testTransacao.getCartao().setDataValidade(dataTest);
+		testCartao.setDataValidade(dataTest);
 		
 		BDDMockito.given(cartaoRepository.findByNumero(Mockito.any()))
 		.willReturn(Optional.of(testCartao));
