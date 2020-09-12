@@ -85,18 +85,17 @@ public class TransacaoServiceTest {
 	}
 
 	@Test
-	public void testSalvarComSucesso() throws ConsistenciaException, ParseException {
+	public void testSalvarComSucesso() throws ConsistenciaException, ParseException {				
 		
 		BDDMockito.given(cartaoRepository.findByNumero(Mockito.any()))
-		.willReturn(Optional.of(testCartao));
-
+			.willReturn(Optional.of(testCartao));
+		
 		BDDMockito.given(transacaoRepository.save(Mockito.any(Transacao.class)))
-		.willReturn(new Transacao());
-
+			.willReturn(new Transacao());
+		
 		Transacao resultado = transacaoService.salvar(testTransacao);
-
+		
 		assertNotNull(resultado);
-
 	}
 
 	@Test(expected = ConsistenciaException.class)
@@ -126,7 +125,7 @@ public class TransacaoServiceTest {
 	@Test(expected = ConsistenciaException.class)
 	public void testSalvarCartaoVencido() throws ConsistenciaException{
 		
-		dataTest = new Date();
+		dataTest.setTime(5000);
 		testCartao.setDataValidade(dataTest);
 		
 		BDDMockito.given(cartaoRepository.findByNumero(Mockito.any()))
