@@ -76,7 +76,7 @@ public class TransacaoControllerTest {
 				.andExpect(jsonPath("$.dados[0].juros").value(transacao.GetJuros()))
 				.andExpect(jsonPath("$.dados[0].qtdParcelas").value(transacao.GetqdtParcelas()))
 				.andExpect(jsonPath("$.dados[0].valor").value(transacao.GetValor()))
-				.andExpect(jsonPath("$.dados[0].numeroCartao").value(transacao.getCartao().getNumero()))
+				.andExpect(jsonPath("$.dados[0].cartaoNumero").value(transacao.getCartao().getNumero()))
 				.andExpect(jsonPath("$.erros").isEmpty());
 
 		
@@ -116,7 +116,7 @@ public class TransacaoControllerTest {
 				.andExpect(jsonPath("$.dados.juros").value(transacao.GetJuros()))
 				.andExpect(jsonPath("$.dados.qdtParcelas").value(transacao.GetqdtParcelas()))
 				.andExpect(jsonPath("$.dados.valor").value(transacao.GetValor()))
-				.andExpect(jsonPath("$.dados.numeroCartao").value(transacao.getCartao().getNumero()))
+				.andExpect(jsonPath("$.dados.cartaoNumero").value(transacao.getCartao().getNumero()))
 				.andExpect(jsonPath("$.erros").isEmpty());
 		
 	}
@@ -159,7 +159,7 @@ public class TransacaoControllerTest {
 			.contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isBadRequest())
-			.andExpect(jsonPath("$.erros").value("CNPJ não pode ser vazio."));
+			.andExpect(jsonPath("$.erros").value("O CNPJ não pode estar vazio"));
 		
 	}
 	

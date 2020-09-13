@@ -26,7 +26,7 @@ public class TransacaoDto {
 	@Length(min = 1, max = 2, message = "Quantidade de parcelas deve ter até 2 digitos")
 	private String qtdParcelas;
 	
-	@NotEmpty(message = "O numero do cartão não pode estar vazio")
+	@NotEmpty(message = "Numero do cartão não pode estar vazio")
 	private String cartaoNumero;
 
 	public String getId() {
