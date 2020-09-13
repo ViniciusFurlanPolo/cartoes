@@ -119,7 +119,7 @@ public class ConversaoUtils {
    		transacaoDto.setValor(String.valueOf(transacao.GetValor()));
    		transacaoDto.setJuros(String.valueOf(transacao.GetJuros()));
    		transacaoDto.setQtdParcalas(String.valueOf(transacao.GetqdtParcelas()));
-   		transacaoDto.setCartaoId(String.valueOf(transacao.getCartao().getId()));
+   		transacaoDto.setCartaoNumero(String.valueOf(transacao.getCartao().getNumero()));
    		
    		return transacaoDto;
    	}

@@ -27,8 +27,8 @@ public class TransacaoDto {
 	@Length(min = 1, max = 2, message = "Quantidade de parcelas deve ter até 2 digitos")
 	private String qtdParcelas;
 	
-	@NotEmpty(message = "O id do cartão não pode estar vazio")
-	private String cartaoId;
+	@NotEmpty(message = "O numero do cartão não pode estar vazio")
+	private String cartaoNumero;
 
 	public String getId() {
 		return id;
@@ -70,12 +70,12 @@ public class TransacaoDto {
 		this.qtdParcelas = qtdParcelas;
 	}
 
-	public String getCartaoId() {
-		return cartaoId;
+	public String getCartaoNumero() {
+		return cartaoNumero;
 	}
 
-	public void setCartaoId(String cartaoId) {
-		this.cartaoId = cartaoId;
+	public void setCartaoNumero(String cartaoNumero) {
+		this.cartaoNumero = cartaoNumero;
 	}
 
 	@Override
@@ -86,7 +86,7 @@ public class TransacaoDto {
 				+ "valor =" + valor + ";"
 				+ "juros =" + juros + ";"
 				+ "qtdParcelas =" + qtdParcelas + ";"
-				+ "cartaoId =" + cartaoId + "]";
+				+ "cartaoId =" + cartaoNumero + "]";
 				
 	}
 }
