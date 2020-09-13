@@ -137,7 +137,7 @@ public class TransacaoControllerTest {
 				.contentType(MediaType.APPLICATION_JSON)
 				.accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isBadRequest())
-				.andExpect(jsonPath("$.erros").value("Teste inconsistência."));
+				.andExpect(jsonPath("$.erros").value("Teste inconsistência"));
 	}
 	
 	@Test
@@ -183,7 +183,7 @@ public class TransacaoControllerTest {
 			.contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isBadRequest())
-			.andExpect(jsonPath("$.erros").value("CNPJ deve ter exatamente 14 caracteres."));
+			.andExpect(jsonPath("$.erros").value("CNPJ invalido"));
 		
 	}
 	
@@ -206,7 +206,7 @@ public class TransacaoControllerTest {
 			.contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isBadRequest())
-			.andExpect(jsonPath("$.erros").value("Juros não pode ser vazio."));
+			.andExpect(jsonPath("$.erros").value("Juros não pode ser vazio"));
 		
 	}
 	@Test
@@ -251,7 +251,7 @@ public class TransacaoControllerTest {
 			.contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isBadRequest())
-			.andExpect(jsonPath("$.erros").value("Quantidade de Parcelas não pode ser vazio."));
+			.andExpect(jsonPath("$.erros").value("Quantidade de Parcelas não pode ser vazio"));
 		
 	}
 	
@@ -298,7 +298,7 @@ public class TransacaoControllerTest {
 			.contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isBadRequest())
-			.andExpect(jsonPath("$.erros").value("Numero do Cartão não pode ser vazio."));
+			.andExpect(jsonPath("$.erros").value("Numero do Cartão não pode estar vazio"));
 		
 	}
 	
@@ -322,7 +322,7 @@ public class TransacaoControllerTest {
 			.contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isBadRequest())
-			.andExpect(jsonPath("$.erros").value("Numero do Cartão com digitos insuficientes."));
+			.andExpect(jsonPath("$.erros").value("Numero do Cartão com digitos insuficientes"));
 		
 	}
 	@Test
@@ -345,7 +345,7 @@ public class TransacaoControllerTest {
 			.contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isBadRequest())
-			.andExpect(jsonPath("$.erros").value("Numero do Cartão com digitos excedentes."));
+			.andExpect(jsonPath("$.erros").value("Numero do Cartão com digitos excedentes"));
 		
 	}
 	
