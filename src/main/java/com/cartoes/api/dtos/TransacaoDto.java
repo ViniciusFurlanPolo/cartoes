@@ -11,7 +11,7 @@ public class TransacaoDto {
 	
 	@NotEmpty(message = "O CNPJ não pode estar vazio")
 	@CNPJ(message = "CNPJ invalido")
-	@Length(min = 14, max = 14, message = "CNPJ deve ter exatamente 14 caracteres")
+	@Length(min = 14, max = 14, message = "CNPJ deve ter exatamente 14 caracteres.")
 	private String cnpj;
 	
 	@NotEmpty(message = "O valor não pode estar vazio")
@@ -22,7 +22,7 @@ public class TransacaoDto {
 	@Length(min = 1, max = 4, message = "Juros deve ter até 4 digitos")
 	private String juros;
 	
-	@NotEmpty(message = "A Quantidade de Parcelas não pode estar sozinho")
+	@NotEmpty(message = "A Quantidade de Parcelas não pode estar Vazio")
 	@Length(min = 1, max = 2, message = "Quantidade de parcelas deve ter até 2 digitos")
 	private String qtdParcelas;
 	

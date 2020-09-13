@@ -183,7 +183,7 @@ public class TransacaoControllerTest {
 			.contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isBadRequest())
-			.andExpect(jsonPath("$.erros").value("CNPJ Invalido."));
+			.andExpect(jsonPath("$.erros").value("CNPJ deve ter exatamente 14 caracteres."));
 		
 	}
 	
@@ -229,7 +229,7 @@ public class TransacaoControllerTest {
 			.contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isBadRequest())
-			.andExpect(jsonPath("$.erros").value("Juros Invalidos."));
+			.andExpect(jsonPath("$.erros").value("Juros deve ter até 4 digitos"));
 		
 	}
 	@Test
@@ -275,7 +275,7 @@ public class TransacaoControllerTest {
 			.contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isBadRequest())
-			.andExpect(jsonPath("$.erros").value("Quantidade de Parcelas Invalido."));
+			.andExpect(jsonPath("$.erros").value("Quantidade de parcelas deve ter até 2 digitos"));
 		
 	}
 	
