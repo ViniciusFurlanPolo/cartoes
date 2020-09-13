@@ -10,7 +10,7 @@ public class TransacaoDto {
 	private String id;
 	
 	@NotEmpty(message = "O CNPJ não pode estar vazio")
-	@CNPJ(message = "CNPJ invalido")
+	@CNPJ
 	@Length(min = 14, max = 14, message = "CNPJ deve ter exatamente 14 caracteres.")
 	private String cnpj;
 	
