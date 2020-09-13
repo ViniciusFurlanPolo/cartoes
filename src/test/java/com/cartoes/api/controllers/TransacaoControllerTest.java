@@ -168,7 +168,7 @@ public class TransacaoControllerTest {
 	public void testSalvarCNPJInvalido() throws Exception{
 		TransacaoDto objEntrada = new TransacaoDto();
 		
-		objEntrada.setCnpj("123456");
+		objEntrada.setCnpj("123456789");
 		objEntrada.setJuros("2.5");
 		objEntrada.setQtdParcalas("12");
 		objEntrada.setValor("150.0");

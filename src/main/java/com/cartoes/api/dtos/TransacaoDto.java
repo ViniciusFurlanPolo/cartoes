@@ -7,7 +7,6 @@ import org.hibernate.validator.constraints.br.CNPJ;
 
 public class TransacaoDto {
 	
-	@NotEmpty(message = "O id não pode estar vazio")
 	private String id;
 	
 	@NotEmpty(message = "O CNPJ não pode estar vazio")
