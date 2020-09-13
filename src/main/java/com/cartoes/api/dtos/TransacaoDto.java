@@ -11,7 +11,6 @@ public class TransacaoDto {
 	
 	@NotEmpty(message = "O CNPJ não pode estar vazio")
 	@CNPJ(message = "CNPJ invalido")
-	@Length(min = 14, max = 14, message = "CNPJ invalido")
 	private String cnpj;
 	
 	@NotEmpty(message = "O valor não pode estar vazio")
