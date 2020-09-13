@@ -1,4 +1,4 @@
-package com.cartaoes.api.controller;
+package com.cartoes.api.controllers;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
