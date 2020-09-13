@@ -322,7 +322,7 @@ public class TransacaoControllerTest {
 			.contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isBadRequest())
-			.andExpect(jsonPath("$.erros").value("Numero do Cartão com digitos insuficientes"));
+			.andExpect(jsonPath("$.erros").value("Numero do Cartão deve ter 16 digitos"));
 		
 	}
 	@Test
@@ -345,7 +345,7 @@ public class TransacaoControllerTest {
 			.contentType(MediaType.APPLICATION_JSON)
 			.accept(MediaType.APPLICATION_JSON))
 			.andExpect(status().isBadRequest())
-			.andExpect(jsonPath("$.erros").value("Numero do Cartão com digitos excedentes"));
+			.andExpect(jsonPath("$.erros").value("Numero do Cartão deve ter 16 digitos"));
 		
 	}
 	
