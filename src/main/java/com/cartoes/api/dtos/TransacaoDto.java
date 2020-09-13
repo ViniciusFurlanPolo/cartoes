@@ -18,15 +18,15 @@ public class TransacaoDto {
 	@Length(min = 1, max = 10, message = "O valor deve ter até 10 digitos")
 	private String valor;
 	
-	@NotEmpty(message = "O juros não pode estar vazio")
+	@NotEmpty(message = "Juros não pode ser vazio")
 	@Length(min = 1, max = 4, message = "Juros deve ter até 4 digitos")
 	private String juros;
 	
-	@NotEmpty(message = "A Quantidade de Parcelas não pode estar Vazio")
+	@NotEmpty(message = "Quantidade de Parcelas não pode ser vazio")
 	@Length(min = 1, max = 2, message = "Quantidade de parcelas deve ter até 2 digitos")
 	private String qtdParcelas;
 	
-	@NotEmpty(message = "Numero do cartão não pode estar vazio")
+	@NotEmpty(message = "Numero do Cartão não pode estar vazio")
 	private String cartaoNumero;
 
 	public String getId() {

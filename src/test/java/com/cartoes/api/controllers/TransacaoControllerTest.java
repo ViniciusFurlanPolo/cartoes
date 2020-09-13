@@ -114,7 +114,7 @@ public class TransacaoControllerTest {
 				.andExpect(jsonPath("$.dados.id").value(transacao.Getid()))
 				.andExpect(jsonPath("$.dados.cnpj").value(transacao.GetCnpj()))
 				.andExpect(jsonPath("$.dados.juros").value(transacao.GetJuros()))
-				.andExpect(jsonPath("$.dados.qdtParcelas").value(transacao.GetqdtParcelas()))
+				.andExpect(jsonPath("$.dados.qtdParcelas").value(transacao.GetqdtParcelas()))
 				.andExpect(jsonPath("$.dados.valor").value(transacao.GetValor()))
 				.andExpect(jsonPath("$.dados.cartaoNumero").value(transacao.getCartao().getNumero()))
 				.andExpect(jsonPath("$.erros").isEmpty());
