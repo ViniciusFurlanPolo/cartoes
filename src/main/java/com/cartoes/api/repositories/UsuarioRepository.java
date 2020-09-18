@@ -18,4 +18,14 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
    	@Query("UPDATE Usuario SET senha = :novasenha WHERE id = :idusuario")
    	void alterarSenhaUsuario(@Param("novasenha") String novasenha, @Param("idusuario") int idusuario);
    	
+   	@Transactional
+   	@Modifying(clearAutomatically = true)
+   	@Query("UPDATE Usuario set ativo = 0 WHERE datediff(now(), data_Acesso) > 30")
+   	void BloqueiaUsuariosInativos();
+   	
+   	@Transactional
+   	@Modifying(clearAutomatically = true)
+   	@Query("UPDATE Usuario set data_acesso = now() WHERE cpf = :cpf")
+   	void AtualizaDataAcesso(@Param("cpf") String cpf);
+   	
 }

@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
  
 import com.cartoes.api.entities.Regra;
@@ -172,6 +173,11 @@ public class UsuarioService {
           	usuarioRepository.alterarSenhaUsuario(SenhaUtils.gerarHash(novaSenha), id);
  
    	}
- 
+   	
+   	@Scheduled(fixedRate = 43200000)
+   	public void BloquearUsuario() {
+   		usuarioRepository.BloqueiaUsuariosInativos();
+   		log.info("Service: Verificando usuarios inativos");
+   	}
 }
  

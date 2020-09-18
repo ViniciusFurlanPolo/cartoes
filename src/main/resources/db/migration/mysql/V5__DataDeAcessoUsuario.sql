@@ -1,0 +1,1 @@
+ALTER Table usuario add collumn data_Acesso DATETIME NOT NULL;

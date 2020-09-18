@@ -1,6 +1,7 @@
 package com.cartoes.api.entities;
  
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -36,6 +37,9 @@ public class Usuario implements Serializable {
    	
    	@Column(name = "ativo", nullable = false)
    	private boolean ativo;
+   	
+   	@Column(name = "data_Acesso", nullable = false)
+   	private Date dataAcesso;
    	
    	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
    	@JoinTable(name = "Usuario_Regra",
@@ -81,6 +85,15 @@ public class Usuario implements Serializable {
    	
    	public void setAtivo(boolean ativo) {
           	this.ativo = ativo;
+   	}
+   	
+   	public Date getDataAcesso() {
+   		return dataAcesso;
+   	}
+   	
+   	public void setDataAcesso(Date dataAcesso) {
+   		this.dataAcesso = dataAcesso;
+   		
    	}
  
    	public List<Regra> getRegras() {
